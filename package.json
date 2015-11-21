@@ -1,0 +1,29 @@
+{
+  "name": "juttle-orestes-backend",
+  "version": "1.0.0",
+  "description": "A plugin enabling Juttle computations on timeseries stored in Orestes",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.34",
+    "bluebird-retry": "^0.5.2",
+    "chai": "^3.4.1",
+    "extendable-base": "^0.3.1",
+    "heap": "^0.2.6",
+    "orestes": "^1.0.0",
+    "request": "^2.44.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "juttle",
+    "orestes"
+  ],
+  "author": "Dave Galbraith",
+  "license": "ISC"
+}
