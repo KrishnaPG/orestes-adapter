@@ -20,7 +20,7 @@ var adapter = Orestes({
         native_transport_port: 9042
     },
     elasticsearch: {
-        host: 'localhost',
+        host: '127.0.0.1',
         port: 9200
     },
     spaces: {
