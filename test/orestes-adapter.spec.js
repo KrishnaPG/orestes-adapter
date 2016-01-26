@@ -29,7 +29,7 @@ var adapter = Orestes({
             table_granularity_days: 1
         }
     }
-}, Juttle);
+});
 
 Juttle.adapters.register(adapter.name, adapter);
 
@@ -52,6 +52,7 @@ describe('orestes source', function() {
                     program: read_program
                 })
                 .then(function(result) {
+                    expect(result.errors).deep.equal([]);
                     expect(result.sinks.table).deep.equal(points);
                 });
             });
