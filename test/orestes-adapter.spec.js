@@ -10,7 +10,6 @@ var juttle_test_utils = require('juttle/test/runtime/specs/juttle-test-utils');
 var check_juttle = juttle_test_utils.check_juttle;
 var Juttle = require('juttle/lib/runtime').Juttle;
 var Orestes = require('../lib');
-var adapter_test_utils = require('./orestes-adapter-test-utils');
 var orestes_test_utils = require('orestes/test/orestes-test-utils');
 var remove = require('orestes/lib/orestes-remover').remove;
 
