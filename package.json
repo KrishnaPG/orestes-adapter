@@ -1,7 +1,7 @@
 {
-  "name": "juttle-orestes-backend",
-  "version": "1.0.0",
-  "description": "A plugin enabling Juttle computations on timeseries stored in Orestes",
+  "name": "juttle-orestes-adapter",
+  "version": "0.1.0",
+  "description": "Juttle adapter for Orestes",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -9,10 +9,11 @@
   "dependencies": {
     "bluebird": "^2.9.34",
     "bluebird-retry": "^0.5.2",
+    "bubo": "git://github.com/juttle/bubo",
     "chai": "^3.4.1",
     "extendable-base": "^0.3.1",
     "heap": "^0.2.6",
-    "orestes": "^1.0.0",
+    "orestes": "https://github.com/juttle/orestes.git",
     "request": "^2.44.0",
     "underscore": "^1.8.3"
   },

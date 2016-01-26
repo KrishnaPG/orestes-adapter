@@ -10,11 +10,11 @@ var juttle_test_utils = require('juttle/test/runtime/specs/juttle-test-utils');
 var check_juttle = juttle_test_utils.check_juttle;
 var Juttle = require('juttle/lib/runtime').Juttle;
 var Orestes = require('../lib');
-var backend_test_utils = require('./orestes-backend-test-utils');
-var orestes_test_utils = require('orestes/specs/orestes-test-utils');
-var remove = require('orestes/src/orestes-remover').remove;
+var adapter_test_utils = require('./orestes-adapter-test-utils');
+var orestes_test_utils = require('orestes/test/orestes-test-utils');
+var remove = require('orestes/lib/orestes-remover').remove;
 
-var backend = Orestes({
+var adapter = Orestes({
     port: 9668,
     cassandra: {
         host: '127.0.0.1',
@@ -31,7 +31,7 @@ var backend = Orestes({
     }
 }, Juttle);
 
-Juttle.backends.register(backend.name, backend);
+Juttle.adapters.register(adapter.name, adapter);
 
 describe('orestes source', function() {
     this.timeout(300000);
@@ -41,13 +41,13 @@ describe('orestes source', function() {
     });
 
     function write_read_check(points) {
-        var write_program = util.format('emit -points %s | writex orestes', JSON.stringify(points));
+        var write_program = util.format('emit -points %s | write orestes', JSON.stringify(points));
         return check_juttle({
             program: write_program
         })
         .then(function() {
             return retry(function() {
-                var read_program = 'readx orestes -from :10 years ago: -to :now:';
+                var read_program = 'read orestes -from :10 years ago: -to :now:';
                 return check_juttle({
                     program: read_program
                 })
@@ -93,7 +93,7 @@ describe('orestes source', function() {
             .then(function() {
                 var start = points[start_index].time;
                 var end = points[end_index].time;
-                var read_program = util.format('readx orestes -from :%s: -to :%s:', start, end);
+                var read_program = util.format('read orestes -from :%s: -to :%s:', start, end);
 
                 return check_juttle({
                     program: read_program
@@ -116,7 +116,7 @@ describe('orestes source', function() {
 
         return write_read_check(points)
             .then(function() {
-                var read_program = 'readx orestes -last :hour: host = "a"';
+                var read_program = 'read orestes -last :hour: host = "a"';
                 return check_juttle({
                     program: read_program
                 });
